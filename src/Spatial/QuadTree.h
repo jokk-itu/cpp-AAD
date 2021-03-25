@@ -45,12 +45,9 @@ private:
     void search(const BoundingBox&, const std::shared_ptr<Node>&, std::vector<std::pair<const Point2D, T>>&, const BoundingBox&);
     std::shared_ptr<QuadTree::Node> remove(const Point2D&, const std::shared_ptr<Node>&, const BoundingBox&);
 
-    Point2D getMid(const BoundingBox&);
     BoxPosition getPosition(const BoundingBox&, const Point2D&);
     bool isBoxThresholdReached(const BoundingBox&);
     BoundingBox getBoundingBox(BoxPosition&&, const BoundingBox&);
-    bool isBoundary(const Point2D&, const BoundingBox&);
-    bool isBoundary(const BoundingBox&, const BoundingBox&);
 
 public:
     explicit QuadTree(const BoundingBox);
