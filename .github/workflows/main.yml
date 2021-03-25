@@ -16,7 +16,7 @@ jobs:
       run: cmake -E make_directory ${{github.workspace}}/build
 
     - name: Setup testing dependencies
-      run: cd ${{github.workspace}}/install/linux/
+      run: cd ${{github.workspace}}/install/linux/ \
            bash install_dependencies.sh
 
     - name: Configure CMake
@@ -32,5 +32,5 @@ jobs:
     - name: Test
       working-directory: ${{github.workspace}}/build
       shell: bash
-      run: cd tests
+      run: cd tests \
            ctest -C $BUILD_TYPE
