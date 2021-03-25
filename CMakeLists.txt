@@ -17,7 +17,7 @@ set(Sources
         src/Exceptions/BoxPositionIsNotSupportedException.cpp
         src/Helpers/Point2D.cpp
         src/Helpers/BoundingBox.cpp
-        src/Helpers/BoxPosition.cpp)
+        src/Helpers/BoxPosition.cpp src/Queues/BinomialHeap.cpp src/Queues/BinomialHeap.h)
 
 add_library(${This} STATIC ${Sources} ${Headers})
 
