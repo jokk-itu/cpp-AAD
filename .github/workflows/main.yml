@@ -16,9 +16,7 @@ jobs:
       run: cmake -E make_directory ${{github.workspace}}/build
 
     - name: Setup testing dependencies
-      run: |
-        cd ${{github.workspace}}/install/linux/
-        bash install_dependencies.sh
+      run: bash ./${{github.workspace}}/install/linux/install_dependencies.sh
 
     - name: Configure CMake
       shell: bash
