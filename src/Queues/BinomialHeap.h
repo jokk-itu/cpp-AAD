@@ -32,8 +32,8 @@ public:
     BinomialHeap();
     ~BinomialHeap() = default;
 
-    const unsigned int size() override const;
-    const bool empty() override const;
+    const unsigned int size() const;
+    bool empty() const;
     void pop();
     const T& top();
     void push();
@@ -45,12 +45,12 @@ template<typename T, class Compare>
 BinomialHeap<T, Compare>::BinomialHeap() : N(0) {}
 
 template<typename T, class Compare>
-unsigned int BinomialHeap<T, Compare>::size() {
+const unsigned int BinomialHeap<T, Compare>::size() const {
     return N;
 }
 
 template<typename T, class Compare>
-bool BinomialHeap<T, Compare>::empty() {
+bool BinomialHeap<T, Compare>::empty() const {
     return N == 0;
 }
 
@@ -65,7 +65,7 @@ void BinomialHeap<T, Compare>::push() {
 }
 
 template<typename T, class Compare>
-T& BinomialHeap<T, Compare>::top() {
+const T& BinomialHeap<T, Compare>::top() {
 
 }
 
