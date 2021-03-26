@@ -16,11 +16,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Setup dependencies
+      run: bash ./install/linux/install_dependencies.sh
+
     - name: Create Build Environment
       run: cmake -E make_directory ${{github.workspace}}/build
-
-    - name: Setup testing dependencies
-      run: bash ./install/linux/install_dependencies.sh
 
     - name: Configure CMake
       shell: bash
@@ -43,14 +43,8 @@ jobs:
       working-directory: ${{github.workspace}}/build
       shell: bash
       run: |
-        sudo apt-get install -y lcov
         cd tests
         ./datastructures_tests
-        cd ./CMakeFiles/datastructures_tests.dir/Helpers
-        ls
-        cd ../Spatial
-        ls
-        cd ..
         lcov --capture --directory . --output-file coverage.info
         genhtml coverage.info --output-directory .
         bash <(curl -s https://codecov.io/bash) -f coverage.info -t $CODECOV_TOKEN
