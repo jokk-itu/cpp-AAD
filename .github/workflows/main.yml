@@ -45,9 +45,6 @@ jobs:
         sudo apt-get install -y lcov
         cd tests
         ./datastructures_tests
-        ls
-        cd ..
-        cd ./tests
-        lcov --capture --directory . --output-file coverage.info
+        lcov --capture --base-directory ${{github.workspace}}/build --directory . --output-file coverage.info
         genhtml coverage.info --output-directory .
         bash <(curl -s https://codecov.io/bash) -f coverage.info -t $CODECOV_TOKEN
