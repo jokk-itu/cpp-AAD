@@ -16,15 +16,15 @@ TEST(BinomialHeap_Tests, Test_Empty_ExpectTrue) {
 
 TEST(BinomialHeap_Tests, Test_Empty_ExpectFalse) {
     BinomialHeap<int> heap;
-    //insert one element
+    heap.push(2);
     ASSERT_FALSE(heap.empty());
 }
 
 TEST(BinomialHeap_Tests, Test_Top_ExpectEqual) {
     BinomialHeap<int> heap;
-    //insert 2
-    //insert 4
+    heap.push(2);
+    heap.push(4);
     auto expect = 2;
     auto actual = heap.top();
-    ASSERT_EQUAL(expect, actual);
+    ASSERT_EQ(expect, actual);
 }
