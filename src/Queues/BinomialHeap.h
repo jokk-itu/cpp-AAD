@@ -12,19 +12,19 @@ template<typename T, class Compare = std::less<T>>
 class BinomialHeap {
 private:
     struct Node {
-        T value;
-        int order;
+        const T value;
+        unsigned int order;
         std::shared_ptr<Node> parent;
         std::shared_ptr<Node> sibling;
         std::shared_ptr<Node> child;
         Node() : order(0) {};
-        explicit Node(T value) : order(0), value(value) {};
-        Node(T value, int order) : order(order), value(value) {};
+        explicit Node(T _value) : order(0), value(_value) {};
+        Node(T _value, int _order) : order(_order), value(_value) {};
         ~Node() = default;
     };
 
     unsigned int N;
-    std::unique_ptr<T> min;
+    std::unique_ptr<const T> min;
     std::list<std::shared_ptr<Node>> heap;
     const Compare comparator;
 
@@ -36,13 +36,13 @@ public:
     bool empty() const;
     void pop();
     const T& top();
-    void push();
+    void push(T&);
     //front : iterator
     //back : iterator
 };
 
 template<typename T, class Compare>
-BinomialHeap<T, Compare>::BinomialHeap() : N(0) {}
+BinomialHeap<T, Compare>::BinomialHeap() : N(0), comparator() {}
 
 template<typename T, class Compare>
 const unsigned int BinomialHeap<T, Compare>::size() const {
@@ -56,17 +56,24 @@ bool BinomialHeap<T, Compare>::empty() const {
 
 template<typename T, class Compare>
 void BinomialHeap<T, Compare>::pop() {
-    return;
+    //iterate the heap for the top element
+    //merge the children of the top element
+    //delete the top element
+    //insert that new merged tree into the heap
 }
 
 template<typename T, class Compare>
-void BinomialHeap<T, Compare>::push() {
-    return;
+void BinomialHeap<T, Compare>::push(T& value) {
+    auto node = std::make_shared<Node>(value);
+    //check the first entry for same order
+    //if the same order exists, start merge, recurse check through the heap
+    //else void
 }
 
 template<typename T, class Compare>
 const T& BinomialHeap<T, Compare>::top() {
-
+    //iterate the heap for the top element
+    return *min;
 }
 
 #endif //DATASTRUCTURES_LIB_BINOMIALHEAP_H

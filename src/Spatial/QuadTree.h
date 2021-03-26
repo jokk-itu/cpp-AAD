@@ -9,7 +9,6 @@
 #include <map>
 #include "../Exceptions/PointNotWithinBoxException.cpp"
 #include "../Exceptions/BoxOutOfBoundsException.cpp"
-#include "../Exceptions/BoxPositionIsNotSupportedException.cpp"
 #include "../Helpers/Point2D.h"
 #include "../Helpers/BoundingBox.h"
 #include "../Helpers/BoxPosition.cpp"

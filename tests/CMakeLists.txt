@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(Source
         Spatial/QuadTreeTest.cpp
         Helpers/BoundingBoxTest.cpp
-        Helpers/Point2DTest.cpp)
+        Helpers/Point2DTest.cpp Queues/BinomialHeapTests.cpp)
 
 enable_testing()
 

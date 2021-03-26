@@ -16,11 +16,10 @@ set(Sources
         src/Spatial/QuadTree.tpp
         src/Exceptions/PointNotWithinBoxException.cpp
         src/Exceptions/BoxOutOfBoundsException.cpp
-        src/Exceptions/BoxPositionIsNotSupportedException.cpp
         src/Helpers/Point2D.cpp
         src/Helpers/BoundingBox.cpp
         src/Helpers/BoxPosition.cpp
-        src/Queues/BinomialHeap.cpp
+        src/Queues/BinomialHeap.tpp
         )
 
 add_library(${This} STATIC ${Sources} ${Headers})

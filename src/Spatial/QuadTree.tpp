@@ -85,8 +85,6 @@ QuadTree<T>::remove(const Point2D &point, const std::shared_ptr<Node> &node, con
                                      : remove(point, internalNode->botRight, botRightBox);
             break;
         }
-        default:
-            throw BoxPositionIsNotSupportedException();
     }
     return internalNode;
 }
@@ -155,9 +153,7 @@ QuadTree<T>::insert(const std::pair<Point2D, T> &data, const std::shared_ptr<Nod
                                      ? insert(data, std::make_shared<Internal>(), botRightBox)
                                      : insert(data, internalNode->botRight, botRightBox);
             break;
-        }
-        default:
-            throw BoxPositionIsNotSupportedException();
+        };
     }
     return internalNode;
 }
@@ -231,9 +227,6 @@ void QuadTree<T>::search(const BoundingBox &query,
  */
 template<typename T>
 BoxPosition QuadTree<T>::getPosition(const BoundingBox &_box, const Point2D &point) {
-    if (!_box.isWithinBox(point))
-        throw PointNotWithinBoxException();
-
     if (getBoundingBox(TOPLEFT, _box).isWithinBox(point))
         return TOPLEFT;
     else if (getBoundingBox(BOTLEFT, _box).isWithinBox(point))
@@ -276,10 +269,8 @@ BoundingBox QuadTree<T>::getBoundingBox(BoxPosition &&pos, const BoundingBox &_b
         case BOTLEFT:
             return BoundingBox(Point2D(_box.topLeft.x, mid.y),
                                Point2D(mid.x, _box.botRight.y));
-        case BOTRIGHT:
-            return BoundingBox(mid, _box.botRight);
         default:
-            throw BoxPositionIsNotSupportedException();
+            return BoundingBox(mid, _box.botRight);
     }
 }
 
