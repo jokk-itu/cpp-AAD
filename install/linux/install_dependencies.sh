@@ -8,3 +8,6 @@ cd build
 cmake ..
 make
 sudo make install
+
+#INSTALL CODE COVERAGE DEPENDENCY
+sudo apt-get install -y lcov
