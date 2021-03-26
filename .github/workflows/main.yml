@@ -38,6 +38,7 @@ jobs:
       run: |
         cd tests
         ctest -C $BUILD_TYPE
+        
     - name: CodeCov
       working-directory: ${{github.workspace}}/build
       shell: bash
@@ -45,6 +46,7 @@ jobs:
         sudo apt-get install -y lcov
         cd tests
         ./datastructures_tests
-        lcov --capture --base-directory ${{github.workspace}}/build --directory . --output-file coverage.info
+        ls
+        lcov --capture --directory . --output-file coverage.info
         genhtml coverage.info --output-directory .
         bash <(curl -s https://codecov.io/bash) -f coverage.info -t $CODECOV_TOKEN
