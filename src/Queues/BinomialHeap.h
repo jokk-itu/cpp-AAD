@@ -24,9 +24,11 @@ private:
     };
 
     unsigned int N;
-    std::unique_ptr<const T> min;
+    std::unique_ptr<const T> _top;
     std::list<std::shared_ptr<Node>> heap;
     const Compare comparator;
+
+    void setTop();
 
 public:
     BinomialHeap();
@@ -67,13 +69,21 @@ void BinomialHeap<T, Compare>::push(T& value) {
     auto node = std::make_shared<Node>(value);
     //check the first entry for same order
     //if the same order exists, start merge, recurse check through the heap
-    //else void
+    //N++
 }
 
 template<typename T, class Compare>
 const T& BinomialHeap<T, Compare>::top() {
-    //iterate the heap for the top element
-    return *min;
+    setTop();
+    return *_top;
+}
+
+template<typename T, class Compare>
+void BinomialHeap<T, Compare>::setTop() {
+    T prioritised = heap.front();
+    for(auto &tree : heap) {
+        prioritised = (comparator(prioritised, tree)) ? prioritised : tree;
+    }
 }
 
 #endif //DATASTRUCTURES_LIB_BINOMIALHEAP_H

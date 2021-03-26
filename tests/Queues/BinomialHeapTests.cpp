@@ -19,3 +19,12 @@ TEST(BinomialHeap_Tests, Test_Empty_ExpectFalse) {
     //insert one element
     ASSERT_FALSE(heap.empty());
 }
+
+TEST(BinomialHeap_Tests, Test_Top_ExpectEqual) {
+    BinomialHeap<int> heap;
+    //insert 2
+    //insert 4
+    auto expect = 2;
+    auto actual = heap.top();
+    ASSERT_EQUAL(expect, actual);
+}
