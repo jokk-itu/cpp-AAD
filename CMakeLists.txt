@@ -4,6 +4,7 @@ set(This datastructures_lib)
 project(${This})
 
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_FLAGS --coverage)
 
 set(Headers
         src/Spatial/QuadTree.h
