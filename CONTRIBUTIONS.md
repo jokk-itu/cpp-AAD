@@ -1,4 +1,4 @@
-<h1>Contributing to InstrumentDashboard</h1>
+<h1>Contributing to CPPAAD</h1>
 <hr>
 
 <h3>Table of contents</h3>
